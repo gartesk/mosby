@@ -15,19 +15,27 @@
  *
  */
 
-package com.hannesdorfmann.mosby3.mvi;
+package com.hannesdorfmann.mosby3.mvi
 
-import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby3.mvp.MvpView;
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.subjects.Subject
 
 /**
- * This type of presenter is responsible for interaction with the viewState in a Model-View-Intent way.
- * It is the bridge that is responsible for setting up the reactive flow between viewState and model.
- *
- * @param <V> The type of the View this presenter responds to
- * @param <VS> The type of the ViewState (Model)
- * @author Hannes Dorfmann
- * @since 3.0
+ * Just a simple [DisposableObserver] that is used to cancel subscriptions from view's
+ * intent to the internal relays
  */
-public interface MviPresenter<V extends MvpView, VS> extends MvpPresenter<V> {
+internal class DisposableIntentObserver<I>(private val subject: Subject<I>) :
+	DisposableObserver<I>() {
+
+	override fun onNext(value: I) {
+		subject.onNext(value)
+	}
+
+	override fun onError(e: Throwable) {
+		throw IllegalStateException("View intents must not throw errors", e)
+	}
+
+	override fun onComplete() {
+		subject.onComplete()
+	}
 }

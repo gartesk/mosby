@@ -14,15 +14,17 @@
  * limitations under the License.
  *
  */
-apply plugin: 'java'
-apply plugin: 'kotlin'
 
-dependencies {
+package com.hannesdorfmann.mosby3.mvi
 
-	api project(':mvp-common')
-	implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
-	implementation "androidx.annotation:annotation:$androidXAnnotationVersion"
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter
+import com.hannesdorfmann.mosby3.mvp.MvpView
 
-	testImplementation "junit:junit:$junitVersion"
-	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-}
+/**
+ * This type of presenter is responsible for interaction with the viewState in a Model-View-Intent way.
+ * It is the bridge that is responsible for setting up the reactive flow between viewState and model.
+ *
+ * @param <V> The type of the View this presenter responds to
+ * @param <VS> The type of the ViewState (Model)
+ */
+interface MviPresenter<V : MvpView, VS> : MvpPresenter<V>
