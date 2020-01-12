@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.hannesdorfmann.mosby3.mvp;
+package com.hannesdorfmann.mosby3.mvp
 
 /**
  * The root view interface for every mvp view
- *
- * @author Hannes Dorfmann
- * @since 1.0.0
  */
-public interface MvpView {
-}
+interface MvpView
