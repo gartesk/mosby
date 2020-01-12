@@ -19,4 +19,5 @@
     <item quantity="one">%1$d Item</item>
     <item quantity="other">%1$d Items</item>
   </plurals>
+  <string name="action_more_items_format">+ %1$d</string>
 </resources>
