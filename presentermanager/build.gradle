@@ -1,63 +1,45 @@
 apply plugin: 'com.android.library'
-apply from: '../maven-push.gradle'
-apply from: '../findbugs.gradle'
+apply plugin: 'kotlin-android'
 
 android {
 
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+	compileSdkVersion rootProject.ext.compileSdkVersion
+	buildToolsVersion rootProject.ext.buildToolsVersion
 
-  defaultConfig {
-    minSdkVersion rootProject.ext.minSdk
-    targetSdkVersion rootProject.ext.targetSdk
-    versionName project.VERSION_NAME
-    versionCode Integer.parseInt(project.VERSION_CODE)
+	defaultConfig {
+		minSdkVersion rootProject.ext.minSdk
+		targetSdkVersion rootProject.ext.targetSdk
+		versionName project.VERSION_NAME
+		versionCode Integer.parseInt(project.VERSION_CODE)
 
-    packagingOptions {
-      exclude 'LICENSE.txt'
-    }
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-  }
-
-  compileOptions {
-    sourceCompatibility rootProject.ext.javaSourceCompatibility
-    targetCompatibility rootProject.ext.javaTargetCompatibility
-  }
-
-  /*
-  testOptions {
-    unitTests.returnDefaultValues = true
-  }
-  */
+		packagingOptions {
+			exclude 'LICENSE.txt'
+		}
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
 }
 
 dependencies {
+	api project(':mvp-common')
 
-  compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibVersion
-  compile 'com.android.support:support-v4:' + rootProject.ext.supportLibVersion
+	implementation "androidx.appcompat:appcompat:$androidXAppcompatVersion"
+	implementation "androidx.legacy:legacy-support-v4:$androidXLegacyVersion"
 
-  compile project(':mvp-common')
+	testImplementation "junit:junit:$junitVersion"
+	testImplementation "org.mockito:mockito-core:$mockitoVersion"
 
-  testCompile 'junit:junit:' + rootProject.ext.junitVersion
-  testCompile 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
-  //testCompile 'org.mockito:mockito-android:'+ rootProject.ext.mockitoVersion
-
-
-  testCompile "org.robolectric:robolectric:"+rootProject.ext.robolectricVersion
-  testCompile "org.robolectric:shadows-support-v4:"+rootProject.ext.robolectricVersion
-
-
-  testCompile('org.powermock:powermock-api-mockito:' + rootProject.ext.powermockVersion) {
-    exclude module: 'hamcrest-core'
-    exclude module: 'objenesis'
-  }
-  testCompile('org.powermock:powermock-module-junit4:' + rootProject.ext.powermockVersion) {
-    exclude module: 'hamcrest-core'
-    exclude module: 'objenesis'
-  }
+	testApi("org.powermock:powermock-api-mockito2:$powermockVersion") {
+		exclude module: 'hamcrest-core'
+		exclude module: 'objenesis'
+	}
+	testImplementation("org.powermock:powermock-module-junit4:$powermockVersion") {
+		exclude module: 'hamcrest-core'
+		exclude module: 'objenesis'
+	}
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 }
