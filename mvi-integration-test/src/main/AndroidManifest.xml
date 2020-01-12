@@ -33,7 +33,6 @@
         <activity android:name=".lifecycle.fragment.SimpleFragmentContainerActivity" />
         <activity android:name=".lifecycle.fragment.RetainingFragmentContainerActivity" />
         <activity android:name=".lifecycle.fragment.childfragment.MviLifecycleChildFragmentActivity" />
-        <activity android:name=".lifecycle.fragment.backstack.MviLifecycleBackstackActivity" />
         <activity android:name=".lifecycle.viewgroup.MviViewGroupContainerActivity" />
         <activity android:name=".lifecycle.activity.MviFinishInOnCreateActivity" />
         <activity android:name=".lifecycle.activity.MviFinishInOnStartActivity" />

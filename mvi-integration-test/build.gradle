@@ -15,50 +15,44 @@
  *
  */
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+	compileSdkVersion rootProject.ext.compileSdkVersion
+	buildToolsVersion rootProject.ext.buildToolsVersion
 
-    compileOptions {
-        sourceCompatibility rootProject.ext.javaSourceCompatibility
-        targetCompatibility rootProject.ext.javaTargetCompatibility
-    }
+	defaultConfig {
+		applicationId "com.hannesdorfmann.mosby3.mvi.integrationtest"
+		minSdkVersion rootProject.ext.minSdk
+		targetSdkVersion rootProject.ext.targetSdk
+		versionName project.VERSION_NAME
+		versionCode Integer.parseInt(project.VERSION_CODE)
 
-    defaultConfig {
-        applicationId "com.hannesdorfmann.mosby3.mvi.integrationtest"
-        minSdkVersion rootProject.ext.minSdk
-        targetSdkVersion rootProject.ext.targetSdk
-        versionName project.VERSION_NAME
-        versionCode Integer.parseInt(project.VERSION_CODE)
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    lintOptions {
-        abortOnError false
-    }
+	lintOptions {
+		abortOnError false
+	}
 }
 
 dependencies {
-    compile project(':mvi')
-    compile "io.reactivex.rxjava2:rxandroid:" + rootProject.ext.rxAndroid2Version
+	implementation project(':mvi')
+	implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid2Version"
+	implementation "androidx.constraintlayout:constraintlayout:$androidXConstraintLayoutVersion"
+	implementation "com.google.android.material:material:$materialVersion"
 
+	androidTestImplementation "androidx.test:runner:$androidXTestVersion"
+	androidTestImplementation "androidx.test:rules:$androidXTestVersion"
+	androidTestImplementation "androidx.test.ext:junit:$androidXTestVersion"
+	androidTestImplementation "junit:junit:$junitVersion"
 
-    androidTestCompile 'com.android.support.test:runner:' + rootProject.ext.androidSupportTestVersion
-    androidTestCompile 'com.android.support.test:rules:' + rootProject.ext.androidSupportTestVersion
-    androidTestCompile 'junit:junit:' + rootProject.ext.junitVersion
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:' + rootProject.ext.supportLibVersion
-}
-
-configurations.all {
-    resolutionStrategy.force 'com.android.support:support-annotations:' + rootProject.ext.supportLibVersion
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 }
