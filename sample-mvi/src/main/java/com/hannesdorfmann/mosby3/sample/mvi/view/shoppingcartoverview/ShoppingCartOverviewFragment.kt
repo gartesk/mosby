@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Hannes Dorfmann.
+ * Copyright 2020 MosbyX contributors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,7 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 package com.hannesdorfmann.mosby3.sample.mvi.view.shoppingcartoverview
 
@@ -37,7 +36,7 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
- * This class doesn't neccessarily has to be a fragment. It's just a fragment because I want to
+ * This class doesn't necessarily has to be a fragment. It's just a fragment because I want to
  * demonstrate that mosby works with fragments in xml layouts too.
  */
 class ShoppingCartOverviewFragment :
