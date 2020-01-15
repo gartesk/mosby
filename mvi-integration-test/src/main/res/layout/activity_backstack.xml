@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hannesdorfmann.mosby3.mvi.integrationtest.backstack.BackstackActivity">
+    tools:context="com.gartesk.mosbyx.mvi.integrationtest.backstack.BackstackActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

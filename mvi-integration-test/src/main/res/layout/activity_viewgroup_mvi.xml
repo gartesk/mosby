@@ -19,7 +19,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hannesdorfmann.mosby3.mvi.integrationtest.lifecycle.viewgroup.TestMviFrameLayout
+    <com.gartesk.mosbyx.mvi.integrationtest.lifecycle.viewgroup.TestMviFrameLayout
         android:id="@+id/testFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,5 +30,5 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Custom MVI ViewGroup" />
-    </com.hannesdorfmann.mosby3.mvi.integrationtest.lifecycle.viewgroup.TestMviFrameLayout>
+    </com.gartesk.mosbyx.mvi.integrationtest.lifecycle.viewgroup.TestMviFrameLayout>
 </FrameLayout>

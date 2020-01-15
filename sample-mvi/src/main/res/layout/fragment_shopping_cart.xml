@@ -29,7 +29,7 @@
         android:paddingRight="16dp"
         android:paddingBottom="8dp">
 
-        <com.hannesdorfmann.mosby3.sample.mvi.view.checkoutbutton.CheckoutButton
+        <com.gartesk.mosbyx.sample.mvi.view.checkoutbutton.CheckoutButton
             android:id="@+id/checkoutButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -40,7 +40,7 @@
             android:text="Checkout"
             android:textColor="#FFFFFF" />
 
-        <com.hannesdorfmann.mosby3.sample.mvi.view.shoppingcartlabel.ShoppingCartLabel
+        <com.gartesk.mosbyx.sample.mvi.view.shoppingcartlabel.ShoppingCartLabel
             android:id="@+id/shoppingCartLabel"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
 
     </FrameLayout>
 
-    <com.hannesdorfmann.mosby3.sample.mvi.view.selectedcounttoolbar.SelectedCountToolbar
+    <com.gartesk.mosbyx.sample.mvi.view.selectedcounttoolbar.SelectedCountToolbar
         android:id="@+id/selectedCountToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"

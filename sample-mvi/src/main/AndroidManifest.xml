@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hannesdorfmann.mosby3.sample.mvi">
+    package="com.gartesk.mosbyx.sample.mvi">
 
   <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -42,7 +42,7 @@
         android:theme="@style/AppTheme">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.hannesdorfmann.mosby3.sample.mvi.MainActivity"/>
+          android:value="com.gartesk.mosbyx.sample.mvi.MainActivity"/>
     </activity>
   </application>
 

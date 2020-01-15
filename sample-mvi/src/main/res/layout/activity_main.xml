@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:orientation="vertical"
-            tools:context="com.hannesdorfmann.mosby3.sample.mvi.MainActivity">
+            tools:context="com.gartesk.mosbyx.sample.mvi.MainActivity">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -51,12 +51,12 @@
 
         <fragment
             android:id="@+id/shoppingCartFragment"
-            android:name="com.hannesdorfmann.mosby3.sample.mvi.view.shoppingcartoverview.ShoppingCartOverviewFragment"
+            android:name="com.gartesk.mosbyx.sample.mvi.view.shoppingcartoverview.ShoppingCartOverviewFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
 
-    <com.hannesdorfmann.mosby3.sample.mvi.view.menu.MainMenuLayout
+    <com.gartesk.mosbyx.sample.mvi.view.menu.MainMenuLayout
         android:id="@+id/mainMenu"
         android:layout_width="200dp"
         android:layout_height="match_parent"
