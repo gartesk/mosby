@@ -203,7 +203,7 @@ class ViewGroupMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>(
 		delegateCallback.superOnRestoreInstanceState(state.superState)
 	}
 
-	override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) = Unit
+	override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) = Unit
 
 	override fun onActivityStarted(activity: Activity) = Unit
 

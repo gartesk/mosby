@@ -169,7 +169,7 @@ constructor(
 		presenter = null
 	}
 
-	override fun onPostCreate(savedInstanceState: Bundle?) {}
+	override fun onPostCreate(savedInstanceState: Bundle?) = Unit
 
 	override fun onPause() = Unit
 
