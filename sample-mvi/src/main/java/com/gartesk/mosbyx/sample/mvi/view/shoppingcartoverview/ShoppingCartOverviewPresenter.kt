@@ -37,11 +37,11 @@ class ShoppingCartOverviewPresenter(
 		// Observable that emits a list of selected products over time (or empty list if the selection has been cleared)
 		val selectedItemsIntent: Observable<List<Product>> = intent { it.selectItemsIntent() }
 			.mergeWith(clearSelectionIntent.map { emptyList<Product>() })
+			.startWith(emptyList<Product>())
 			.doOnNext { items: List<Product> ->
 				Timber.d("intent: selected items %d", items.size)
 			}
-			.startWith(emptyList<Product>())
-			.publish()
+			.replay(1)
 			.refCount()
 
 		// Delete multiple selected Items
@@ -63,8 +63,8 @@ class ShoppingCartOverviewPresenter(
 		// Display a list of items in the shopping cart
 		val shoppingCartContentObservable: Observable<List<Product>> =
 			intent { it.loadItemsIntent() }
-				.doOnNext { Timber.d("load ShoppingCart intent") }
 				.flatMap { shoppingCart.getItemsInShoppingCart() }
+				.doOnNext { Timber.d("load ShoppingCart intent $it") }
 
 		// Display list of items / view state
 
@@ -76,6 +76,7 @@ class ShoppingCartOverviewPresenter(
 					itemsInShoppingCart.map { ShoppingCartOverviewItem(it, selectedProducts.contains(it)) }
 				}
 			)
+				.doOnNext { Timber.d("shoppingCartContentWithSelectedItems $it") }
 				.observeOn(AndroidSchedulers.mainThread())
 
 		subscribeViewState(shoppingCartContentWithSelectedItems) { view, itemsInShoppingCart ->

@@ -24,7 +24,8 @@ import io.reactivex.subjects.BehaviorSubject
  * Holds a list of items that has been added to the shopping cart
  */
 class ShoppingCart {
-	val itemsInShoppingCart: BehaviorSubject<List<Product>> =
+
+	private val itemsInShoppingCart: BehaviorSubject<List<Product>> =
 		BehaviorSubject.createDefault<List<Product>>(emptyList())
 
 	/**

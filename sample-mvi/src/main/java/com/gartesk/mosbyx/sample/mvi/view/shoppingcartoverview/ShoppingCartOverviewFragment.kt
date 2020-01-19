@@ -135,8 +135,8 @@ class ShoppingCartOverviewFragment :
 					super.onChildDraw(canvas, recyclerView, viewHolder, dX, dY, actionState, currentlyActive)
 				}
 			}
-		val mItemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-		mItemTouchHelper.attachToRecyclerView(recyclerView)
+		val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+		itemTouchHelper.attachToRecyclerView(recyclerView)
 	}
 
 	override fun removeItemIntent(): Observable<Product> =

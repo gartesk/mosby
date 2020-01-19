@@ -29,6 +29,8 @@ import com.gartesk.mosbyx.sample.mvi.view.menu.MenuViewState
 import com.gartesk.mosbyx.sample.mvi.view.product.category.CategoryFragment
 import com.gartesk.mosbyx.sample.mvi.view.product.search.SearchFragment
 import com.gartesk.mosbyx.sample.mvi.view.selectedcounttoolbar.SelectedCountToolbar
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.Subject
 import timber.log.Timber
@@ -39,9 +41,10 @@ class MainActivity : AppCompatActivity() {
 		private const val KEY_TOOLBAR_TITLE = "toolbarTitle"
 	}
 
-	lateinit var toolbar: Toolbar
+	private lateinit var toolbar: Toolbar
+	private lateinit var drawer: DrawerLayout
+	private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
 
-	lateinit var drawer: DrawerLayout
 	private lateinit var clearSelectionRelay: Subject<Unit>
 
 	private var disposable: Disposable? = null
@@ -51,6 +54,8 @@ class MainActivity : AppCompatActivity() {
 		setContentView(R.layout.activity_main)
 		toolbar = findViewById(R.id.toolbar)
 		drawer = findViewById(R.id.drawerLayout)
+		val bottomSheetContainer = findViewById<View>(R.id.bottomSheetContainer)
+		bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetContainer)
 
 		toolbar.title = "Mosby MVI"
 		toolbar.inflateMenu(R.menu.activity_main_toolbar)
@@ -118,7 +123,7 @@ class MainActivity : AppCompatActivity() {
 		if (!closeDrawerIfOpen()) {
 			if (selectedCountToolbar.visibility == View.VISIBLE) {
 				clearSelectionRelay.onNext(Unit)
-			} else {
+			} else if (!closeSlidingUpPanelIfOpen()) {
 				super.onBackPressed()
 			}
 		}
@@ -127,6 +132,14 @@ class MainActivity : AppCompatActivity() {
 	private fun closeDrawerIfOpen(): Boolean {
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START)
+			return true
+		}
+		return false
+	}
+
+	private fun closeSlidingUpPanelIfOpen(): Boolean {
+		if (bottomSheetBehavior.state == STATE_EXPANDED) {
+			bottomSheetBehavior.state = STATE_COLLAPSED
 			return true
 		}
 		return false

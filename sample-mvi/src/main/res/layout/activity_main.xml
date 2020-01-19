@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2020 MosbyX contributors
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -32,6 +31,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:orientation="vertical"
+            android:paddingBottom="?attr/actionBarSize"
             tools:context="com.gartesk.mosbyx.sample.mvi.MainActivity">
 
             <androidx.appcompat.widget.Toolbar
@@ -49,12 +49,21 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/shoppingCartFragment"
-            android:name="com.gartesk.mosbyx.sample.mvi.view.shoppingcartoverview.ShoppingCartOverviewFragment"
+        <FrameLayout
+            android:id="@+id/bottomSheetContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
+            android:layout_height="match_parent"
+            android:clickable="true"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="?attr/actionBarSize"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <fragment
+                android:name="com.gartesk.mosbyx.sample.mvi.view.shoppingcartoverview.ShoppingCartOverviewFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.gartesk.mosbyx.sample.mvi.view.menu.MainMenuLayout
         android:id="@+id/mainMenu"

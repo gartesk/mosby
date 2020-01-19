@@ -14,5 +14,5 @@
   ~ limitations under the License.
   -->
 <resources>
-  <integer name="grid_span_size">4</integer>
+    <integer name="grid_span_size">4</integer>
 </resources>

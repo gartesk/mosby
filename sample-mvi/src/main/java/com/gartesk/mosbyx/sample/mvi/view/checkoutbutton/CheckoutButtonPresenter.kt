@@ -33,7 +33,7 @@ class CheckoutButtonPresenter(private val shoppingCart: ShoppingCart) :
 			.flatMap { shoppingCart.getItemsInShoppingCart() }
 			.map { items ->
 				items.map { it.price }
-					.reduce { sum, price -> sum + price }
+					.fold(0.0) { sum, price -> sum + price }
 			}
 			.observeOn(AndroidSchedulers.mainThread())
 

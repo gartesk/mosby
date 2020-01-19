@@ -14,20 +14,22 @@
   ~ limitations under the License.
   -->
 <resources>
-  <color name="colorPrimary">#546E7A</color>
-  <color name="colorPrimaryDark">#455A64</color>
-  <color name="accent">#607D8B</color>
-  <color name="accent_dark">#455A64</color>
-  <color name="colorAccent">@color/accent</color>
-  <color name="scrim">#B9323232</color>
-  <color name="window_background">#E0E0E0</color>
-  <color name="search_toolbar_background">#B0BEC5</color>
-  <color name="search_statusbar_background">#90A4AE</color>
+    <color name="colorPrimary">#546E7A</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="accent">#607D8B</color>
+    <color name="accent_dark">#455A64</color>
+    <color name="colorAccent">@color/accent</color>
+    <color name="scrim">#B9323232</color>
+    <color name="window_background">#E0E0E0</color>
+    <color name="search_toolbar_background">#B0BEC5</color>
+    <color name="search_statusbar_background">#90A4AE</color>
 
-  <color name="loadMoreItems">#9E9E9E</color>
-  <color name="mainMenuItemSelected">#CFD8DC</color>
+    <color name="loadMoreItems">#9E9E9E</color>
+    <color name="mainMenuItemSelected">#CFD8DC</color>
 
-  <color name="selected_shopping_cart_item">#40B0BEC5</color>
+    <color name="selected_shopping_cart_item">#40B0BEC5</color>
 
-  <color name="delete_background">#E53935</color>
+    <color name="delete_background">#E53935</color>
+    <color name="shopping_cart_text">#FFFFFF</color>
+    <color name="shopping_cart_visible_area_background">#EEEEEE</color>
 </resources>

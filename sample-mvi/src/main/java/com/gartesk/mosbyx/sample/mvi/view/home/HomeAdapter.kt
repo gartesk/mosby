@@ -128,13 +128,15 @@ class HomeAdapter(
 		}
 
 	override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+		if (holder is LoadingViewHolder) {
+			return
+		}
 		val item = items[position]
 		when (holder) {
-			is LoadingViewHolder -> Unit
 			is ProductViewHolder -> holder.bind(item as Product)
 			is SectionHeaderViewHolder -> holder.onBind(item as SectionHeader)
 			is MoreItemsViewHolder -> holder.bind(item as AdditionalItemsLoadable)
-			else -> throw IllegalArgumentException("couldn't accept  ViewHolder $holder")
+			else -> throw IllegalArgumentException("couldn't accept ViewHolder $holder")
 		}
 	}
 
