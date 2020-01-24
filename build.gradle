@@ -56,7 +56,7 @@ ext {
 	// Libraries for samples
 	retrofitVersion = '2.6.1'
 	okHttpVersion = '4.2.2'
-	rxBindingVersion = '3.0.0'
+	rxBindingVersion = '3.1.0'
 	timberVersion = '4.7.1'
 	glideVersion = '4.10.0'
 

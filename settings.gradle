@@ -1,6 +1,3 @@
-include ':mvp-common',
-        ':mvi',
-        ':mvi-common',
+include ':mvi',
         ':mvi-integration-test',
-        ':sample-mvi',
-        ':presentermanager'
+        ':sample-mvi'

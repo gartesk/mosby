@@ -40,10 +40,20 @@ android {
 }
 
 dependencies {
-
-	api project(':mvi-common')
-	api project(':presentermanager')
+	implementation "androidx.annotation:annotation:$androidXAnnotationVersion"
 	implementation "androidx.appcompat:appcompat:$androidXAppcompatVersion"
+	implementation "androidx.legacy:legacy-support-v4:$androidXLegacyVersion"
 	implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+	testImplementation "junit:junit:$junitVersion"
+	testImplementation "org.mockito:mockito-core:$mockitoVersion"
+	testImplementation("org.powermock:powermock-api-mockito2:$powermockVersion") {
+		exclude module: 'hamcrest-core'
+		exclude module: 'objenesis'
+	}
+	testImplementation("org.powermock:powermock-module-junit4:$powermockVersion") {
+		exclude module: 'hamcrest-core'
+		exclude module: 'objenesis'
+	}
 }

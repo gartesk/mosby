@@ -20,7 +20,6 @@ import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.atomic.AtomicInteger
 import org.junit.Assert.*
 import org.junit.Test
-import org.omg.CORBA.Object
 
 class MviBasePresenterTest {
 
@@ -32,7 +31,7 @@ class MviBasePresenterTest {
 
 		val view = object : MvpView {}
 
-		val presenter = object : MviBasePresenter<MvpView, Object>() {
+		val presenter = object : MviBasePresenter<MvpView, Any>() {
 			override fun bindIntents() {
 				bindInvocations.incrementAndGet()
 			}
@@ -130,7 +129,7 @@ class MviBasePresenterTest {
 
 		val view = object : MvpView {}
 
-		val presenter = object : MviBasePresenter<MvpView, Object>() {
+		val presenter = object : MviBasePresenter<MvpView, Any>() {
 			override fun bindIntents() {
 				bindInvocations.incrementAndGet()
 			}
