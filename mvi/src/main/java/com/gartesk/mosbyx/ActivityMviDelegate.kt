@@ -19,11 +19,10 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 
 /**
- * A delegate for Activities to attach them to mosby mvp.
+ * A delegate for Activities to attach them to MosbyX mvi.
  *
  * The following methods must be invoked from the corresponding Activities lifecycle methods:
  *
@@ -38,10 +37,10 @@ import com.gartesk.mosbyx.mvp.MvpView
  *  * [onSaveInstanceState]
  *  * [onPostCreate]
  *
- * @param [V] The type of [MvpView]
- * @param [P] The type of [MvpPresenter]
+ * @param [V] The type of [MviView]
+ * @param [P] The type of [MviPresenter]
  */
-interface ActivityMviDelegate<V : MvpView, P : MviPresenter<V, *>> {
+interface ActivityMviDelegate<V : MviView, P : MviPresenter<V, *>> {
 
 	/**
 	 * This method must be called from [Activity.onCreate].

@@ -40,7 +40,7 @@ class CheckoutButton(
 	private val mviDelegate: ViewGroupMviDelegate<CheckoutButtonView, CheckoutButtonPresenter> =
 		ViewGroupMviDelegateImpl(this, this, true)
 
-	override val mvpView: CheckoutButtonView
+	override val mviView: CheckoutButtonView
 		get() = this
 
 	init {

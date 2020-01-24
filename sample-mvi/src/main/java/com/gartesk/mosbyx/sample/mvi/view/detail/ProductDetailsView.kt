@@ -15,12 +15,12 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.detail
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import com.gartesk.mosbyx.sample.mvi.businesslogic.interactor.details.ProductDetailsViewState
 import com.gartesk.mosbyx.sample.mvi.businesslogic.model.FeedItem.Product
 import io.reactivex.Observable
 
-interface ProductDetailsView : MvpView {
+interface ProductDetailsView : MviView {
 	/**
 	 * The intent to load details of a certain product
 	 */

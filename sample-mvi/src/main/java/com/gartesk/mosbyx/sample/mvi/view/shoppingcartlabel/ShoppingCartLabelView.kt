@@ -15,13 +15,13 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.shoppingcartlabel
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import io.reactivex.Observable
 
 /**
  * A View that displays the number of items in the shopping cart
  */
-interface ShoppingCartLabelView : MvpView {
+interface ShoppingCartLabelView : MviView {
 
 	/**
 	 * Intent to load the data

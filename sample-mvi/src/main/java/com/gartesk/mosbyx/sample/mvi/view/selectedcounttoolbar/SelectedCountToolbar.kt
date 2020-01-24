@@ -57,7 +57,7 @@ class SelectedCountToolbar(
 
 	override fun deleteSelectedItemsIntent(): Observable<Unit> = deleteSelectedItemsIntent
 
-	override val mvpView: SelectedCountToolbarView
+	override val mviView: SelectedCountToolbarView
 		get() = this
 
 	override fun createPresenter(): SelectedCountToolbarPresenter {

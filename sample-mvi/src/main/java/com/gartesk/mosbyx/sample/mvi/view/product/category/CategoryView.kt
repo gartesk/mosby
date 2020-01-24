@@ -15,13 +15,13 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.product.category
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import io.reactivex.Observable
 
 /**
  * View that shows all items of a given category
  */
-interface CategoryView : MvpView {
+interface CategoryView : MviView {
 	/**
 	 * Observable that triggers the intent to load the data
 	 *

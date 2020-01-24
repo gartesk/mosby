@@ -15,10 +15,10 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.selectedcounttoolbar
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import io.reactivex.Observable
 
-interface SelectedCountToolbarView : MvpView {
+interface SelectedCountToolbarView : MviView {
 	/**
 	 * The intent to clear the selection
 	 */

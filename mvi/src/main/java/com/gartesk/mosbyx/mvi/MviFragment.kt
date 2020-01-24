@@ -26,7 +26,6 @@ import androidx.fragment.app.Fragment
 import com.gartesk.mosbyx.FragmentMviDelegate
 import com.gartesk.mosbyx.FragmentMviDelegateImpl
 import com.gartesk.mosbyx.MviDelegateCallback
-import com.gartesk.mosbyx.mvp.MvpView
 
 /**
  * This abstract class can be used to extend from to implement an Model-View-Intent pattern with
@@ -38,8 +37,8 @@ import com.gartesk.mosbyx.mvp.MvpView
  *
  * The View is detached from Presenter in [onDestroyView]
  */
-abstract class MviFragment<V : MvpView, P : MviPresenter<V, *>> :
-	Fragment(), MvpView, MviDelegateCallback<V, P> {
+abstract class MviFragment<V : MviView, P : MviPresenter<V, *>> :
+	Fragment(), MviView, MviDelegateCallback<V, P> {
 
 	private var isRestoringViewState = false
 
@@ -155,7 +154,7 @@ abstract class MviFragment<V : MvpView, P : MviPresenter<V, *>> :
 	 */
 	abstract override fun createPresenter(): P
 
-	override val mvpView: V
+	override val mviView: V
 		get() = try {
 			this as V
 		} catch (e: ClassCastException) {

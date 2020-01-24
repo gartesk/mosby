@@ -15,14 +15,14 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.shoppingcartoverview
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import com.gartesk.mosbyx.sample.mvi.businesslogic.model.FeedItem.Product
 import io.reactivex.Observable
 
 /**
  * A View that displays all the items in your shopping cart.
  */
-interface ShoppingCartOverviewView : MvpView {
+interface ShoppingCartOverviewView : MviView {
 
 	/**
 	 * Intent to load the items from the shopping cart

@@ -30,7 +30,8 @@ import com.gartesk.mosbyx.sample.mvi.view.product.category.CategoryFragment
 import com.gartesk.mosbyx.sample.mvi.view.product.search.SearchFragment
 import com.gartesk.mosbyx.sample.mvi.view.selectedcounttoolbar.SelectedCountToolbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.*
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.Subject
 import timber.log.Timber
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 		val bottomSheetContainer = findViewById<View>(R.id.bottomSheetContainer)
 		bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetContainer)
 
-		toolbar.title = "Mosby MVI"
+		toolbar.title = "MosbyX MVI"
 		toolbar.inflateMenu(R.menu.activity_main_toolbar)
 		toolbar.setOnMenuItemClickListener {
 			supportFragmentManager.beginTransaction()

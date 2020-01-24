@@ -42,7 +42,7 @@ class ShoppingCartLabel(
 	private val mviDelegate: ViewGroupMviDelegate<ShoppingCartLabelView, ShoppingCartLabelPresenter> =
 		ViewGroupMviDelegateImpl(this, this, true)
 
-	override val mvpView: ShoppingCartLabelView
+	override val mviView: ShoppingCartLabelView
 		get() = this
 
 	override fun createPresenter(): ShoppingCartLabelPresenter {

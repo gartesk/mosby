@@ -15,6 +15,6 @@
  */
 package com.gartesk.mosbyx.mvi.integrationtest.backstack.first
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 
-interface FirstView : MvpView
+interface FirstView : MviView

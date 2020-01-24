@@ -18,10 +18,9 @@ package com.gartesk.mosbyx
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
-
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+
+import com.gartesk.mosbyx.mvi.MviView
 import java.util.UUID
 
 /**
@@ -29,11 +28,11 @@ import java.util.UUID
  * This delegate creates the Presenter and attaches the View to the presenter in [Activity.onStart].
  * The view is detached from presenter in [Activity.onStop]
  *
- * @param [V] The type of [MvpView]
- * @param [P] The type of [MvpPresenter]
+ * @param [V] The type of [MviView]
+ * @param [P] The type of [MviPresenter]
  * @see ActivityMviDelegate
  */
-class ActivityMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>
+class ActivityMviDelegateImpl<V : MviView, P : MviPresenter<V, *>>
 /**
  * Creates a new delegate
  *
@@ -64,7 +63,7 @@ constructor(
 		}
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "MosbyView ID = $mosbyViewId for MvpView: ${delegateCallback.mvpView}")
+			Log.d(DEBUG_TAG, "MosbyView ID = $mosbyViewId for MviView: ${delegateCallback.mviView}")
 		}
 	}
 
@@ -78,7 +77,7 @@ constructor(
 			presenter = createViewIdAndCreatePresenter()
 			if (DEBUG) {
 				Log.d(DEBUG_TAG, "New Presenter instance created: $presenter " +
-						"for ${delegateCallback.mvpView}")
+						"for ${delegateCallback.mviView}")
 			}
 		} else {
 			presenter = PresenterManager.getPresenter<P>(activity, currentMosbyViewId)
@@ -100,7 +99,7 @@ constructor(
 		}
 
 		// presenter is ready, so attach viewState
-		val view = delegateCallback.mvpView
+		val view = delegateCallback.mviView
 
 		if (viewStateWillBeRestored) {
 			delegateCallback.setRestoringViewState(true)
@@ -113,12 +112,12 @@ constructor(
 		}
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "MvpView attached to Presenter. MvpView: $view. Presenter: $presenter")
+			Log.d(DEBUG_TAG, "MviView attached to Presenter. MviView: $view. Presenter: $presenter")
 		}
 	}
 
 	/**
-	 * Generates the unique (mosby internal) view id and calls [MviDelegateCallback.createPresenter]
+	 * Generates the unique (MosbyX internal) view id and calls [MviDelegateCallback.createPresenter]
 	 * to create a new presenter instance
 	 *
 	 * @return The new created presenter instance
@@ -147,8 +146,8 @@ constructor(
 		presenter?.detachView()
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "Detached MvpView from Presenter. " +
-						"MvpView: ${delegateCallback.mvpView}. Presenter: $presenter")
+			Log.d(DEBUG_TAG, "Detached MviView from Presenter. " +
+						"MviView: ${delegateCallback.mviView}. Presenter: $presenter")
 		}
 	}
 

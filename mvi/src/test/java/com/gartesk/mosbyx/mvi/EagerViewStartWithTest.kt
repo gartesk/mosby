@@ -15,8 +15,6 @@
  */
 package com.gartesk.mosbyx.mvi
 
-import com.gartesk.mosbyx.mvp.MvpView
-
 import org.junit.Test
 
 import java.util.ArrayList
@@ -27,7 +25,7 @@ import org.junit.Assert.assertEquals
 class EagerViewStartWithTest {
 
 
-	private class EagerViewStartWith : MvpView {
+	private class EagerViewStartWith : MviView {
 
 		internal var renderedStates: MutableList<String> = ArrayList()
 

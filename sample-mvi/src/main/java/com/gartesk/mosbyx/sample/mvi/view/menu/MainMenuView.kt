@@ -15,13 +15,13 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.menu
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import io.reactivex.Observable
 
 /**
  * Responsible to show a list of menu items
  */
-interface MainMenuView : MvpView {
+interface MainMenuView : MviView {
 	/**
 	 * Intent to load all categories
 	 */

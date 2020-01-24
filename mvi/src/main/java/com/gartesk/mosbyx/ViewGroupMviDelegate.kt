@@ -18,11 +18,11 @@ package com.gartesk.mosbyx
 import android.os.Parcelable
 import android.view.View
 import android.widget.FrameLayout
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviPresenter
+import com.gartesk.mosbyx.mvi.MviView
 
 /**
- * The mvp delegate used for everything that derives from [View] like [FrameLayout]
+ * The mvi delegate used for everything that derives from [View] like [FrameLayout]
  * etc.
  *
  * The following methods must be called from the corresponding View lifecycle method:
@@ -32,7 +32,7 @@ import com.gartesk.mosbyx.mvp.MvpView
  *  * [onSaveInstanceState]
  *  * [onRestoreInstanceState]
  */
-interface ViewGroupMviDelegate<V : MvpView, P : MvpPresenter<V>> {
+interface ViewGroupMviDelegate<V : MviView, P : MviPresenter<V, *>> {
 
 	/**
 	 * Must be called from [View.onAttachedToWindow]

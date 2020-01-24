@@ -15,6 +15,6 @@
  */
 package com.gartesk.mosbyx.mvi.integrationtest.lifecycle
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 
-interface LifecycleTestView : MvpView
+interface LifecycleTestView : MviView

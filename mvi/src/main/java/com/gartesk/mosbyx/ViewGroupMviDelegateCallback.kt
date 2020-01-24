@@ -18,12 +18,12 @@ package com.gartesk.mosbyx
 import android.content.Context
 import android.os.Parcelable
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 
 /**
  * An enhanced version of [MviDelegateCallback] that adds support for [android.view.ViewGroup]
  */
-interface ViewGroupMviDelegateCallback<V : MvpView, P : MviPresenter<V, *>> :
+interface ViewGroupMviDelegateCallback<V : MviView, P : MviPresenter<V, *>> :
 	MviDelegateCallback<V, P> {
 
 	/**

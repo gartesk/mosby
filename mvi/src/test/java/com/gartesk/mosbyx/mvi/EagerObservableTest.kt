@@ -15,7 +15,6 @@
  */
 package com.gartesk.mosbyx.mvi
 
-import com.gartesk.mosbyx.mvp.MvpView
 import io.reactivex.Observable
 import java.util.ArrayList
 import org.junit.Assert.assertEquals
@@ -28,7 +27,7 @@ import org.junit.Test
  */
 class EagerObservableTest {
 
-	private class EagerView : MvpView {
+	private class EagerView : MviView {
 
 		internal var renderedStates: MutableList<String> = ArrayList()
 

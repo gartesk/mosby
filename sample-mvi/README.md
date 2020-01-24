@@ -1,6 +1,6 @@
 # Sample MVI
 
-This example demonstrates how to use Mosby MVI (Model-View-Intent) to build a reactive app.
+This example demonstrates how to use MosbyX MVI (Model-View-Intent) to build a reactive app.
 In this example we have built a shopping app, where users can put items into a shopping cart.
 
 ## Dependencies
@@ -9,7 +9,7 @@ The idea of this sample is to use as few dependencies as possible. For instance,
 by all developers without any prior knowledge of dagger.
 
 So basically this example uses the following libraries:
- - Mosby MVI (obviously) and RxJava 2 (required by Mosby MVI).
+ - MosbyX MVI (obviously) and RxJava 2 (required by MosbyX MVI).
  - Retrofit 2 and Moshi (json parser)
  - Glide (for image loading)
 

@@ -15,14 +15,37 @@
  */
 package com.gartesk.mosbyx.mvi
 
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import androidx.annotation.UiThread
 
 /**
  * This type of presenter is responsible for interaction with the viewState in a Model-View-Intent way.
  * It is the bridge that is responsible for setting up the reactive flow between viewState and model.
  *
+ * MosbyX assumes that all interaction (i.e. updating the View) between Presenter and View is
+ * executed on Android's main UI thread.
+ *
  * @param <V> The type of the View this presenter responds to
  * @param <VS> The type of the ViewState (Model)
  */
-interface MviPresenter<V : MvpView, VS> : MvpPresenter<V>
+interface MviPresenter<V : MviView, VS> {
+
+	/**
+	 * Set or attach the view to this presenter
+	 */
+	@UiThread
+	fun attachView(view: V)
+
+	/**
+	 * Will be called if the view has been detached from the Presenter.
+	 * Usually this happens on screen orientation changes or view (like fragment) has been put on the backstack.
+	 */
+	@UiThread
+	fun detachView()
+
+	/**
+	 * Will be called if the presenter is no longer needed because the View has been destroyed permanently.
+	 * This is where you do clean up stuff.
+	 */
+	@UiThread
+	fun destroy()
+}

@@ -24,16 +24,16 @@ import android.util.Log
 import android.view.View
 
 import androidx.annotation.MainThread
+import com.gartesk.mosbyx.mvi.MviPresenter
 
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import java.util.UUID
 
 /**
  * A internal class responsible to save internal presenter instances during screen orientation
  * changes and reattach the presenter afterwards.
  *
- * The idea is that each MVP View (like a Activity, Fragment, ViewGroup) will get a unique view id.
+ * The idea is that each MVI View (like a Activity, Fragment, ViewGroup) will get a unique view id.
  * This view id is used to store the presenter and viewstate in it. After screen orientation changes
  * we can reuse the presenter and viewstate by querying for the given view id (must be saved in
  * view's state somehow).
@@ -89,7 +89,7 @@ object PresenterManager {
 
 						// No Activity Scoped cache available, so unregister
 						if (activityScopedCacheMap.isEmpty()) {
-							// All Mosby related activities are destroyed, so we can remove the activity lifecycle listener
+							// All MosbyX related activities are destroyed, so we can remove the activity lifecycle listener
 							activity.application.unregisterActivityLifecycleCallbacks(this)
 							if (DEBUG) {
 								Log.d(DEBUG_TAG, "Unregistering ActivityLifecycleCallbacks")
@@ -148,11 +148,11 @@ object PresenterManager {
 	}
 
 	/**
-	 * Get the presenter for the View with the given (Mosby - internal) view Id or `null`
+	 * Get the presenter for the View with the given (MosbyX-internal) view Id or `null`
 	 * if no presenter for the given view (via view id) exists.
 	 *
 	 * @param activity The Activity (used for scoping)
-	 * @param viewId The mosby internal View Id (unique among all [MvpView]
+	 * @param viewId The MosbyX internal View Id (unique among all [MviView]
 	 * @param [P] The Presenter type
 	 * @return The Presenter or `null`
 	 */
@@ -166,11 +166,11 @@ object PresenterManager {
 	}
 
 	/**
-	 * Get the ViewState (see mosby viestate modlue) for the View with the given (Mosby - internal)
+	 * Get the ViewState for the View with the given (MosbyX-internal)
 	 * view Id or `null` if no viewstate for the given view exists.
 	 *
 	 * @param activity The Activity (used for scoping)
-	 * @param viewId The mosby internal View Id (unique among all [MvpView]
+	 * @param viewId The MosbyX internal View Id (unique among all [MviView]
 	 * @param [VS] The type of the ViewState type
 	 * @return The Presenter or `null`
 	 */
@@ -220,10 +220,10 @@ object PresenterManager {
 	 * Puts the presenter into the internal cache
 	 *
 	 * @param activity The parent activity
-	 * @param viewId the view id (mosby internal)
+	 * @param viewId the view id (MosbyX internal)
 	 * @param presenter the presenter
 	 */
-	fun putPresenter(activity: Activity, viewId: String, presenter: MvpPresenter<out MvpView>) {
+	fun putPresenter(activity: Activity, viewId: String, presenter: MviPresenter<out MviView, *>) {
 		val scopedCache = getOrCreateActivityScopedCache(activity)
 		scopedCache.putPresenter(viewId, presenter)
 	}
@@ -232,7 +232,7 @@ object PresenterManager {
 	 * Puts the viewstate into the internal cache
 	 *
 	 * @param activity The parent activity
-	 * @param viewId the view id (mosby internal)
+	 * @param viewId the view id (MosbyX internal)
 	 * @param viewState the presenter
 	 */
 	fun putViewState(activity: Activity, viewId: String, viewState: Any) {
@@ -245,7 +245,7 @@ object PresenterManager {
 	 * stored internally with the given viewId
 	 *
 	 * @param activity The activity
-	 * @param viewId The mosby internal view id
+	 * @param viewId The MosbyX internal view id
 	 */
 	fun remove(activity: Activity, viewId: String) {
 		val activityScope = getActivityScope(activity)

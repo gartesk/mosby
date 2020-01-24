@@ -16,19 +16,19 @@
 package com.gartesk.mosbyx
 
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 
 /**
  * Callback that will be called to instantiate the presenter.
  */
-interface MviDelegateCallback<V : MvpView, P : MviPresenter<V, *>> {
+interface MviDelegateCallback<V : MviView, P : MviPresenter<V, *>> {
 
 	/**
-	 * Get the MvpView for the presenter
+	 * Get the MviView for the presenter
 	 *
 	 * @return The viewState associated with the presenter
 	 */
-	val mvpView: V
+	val mviView: V
 
 	/**
 	 * Creates the presenter instance

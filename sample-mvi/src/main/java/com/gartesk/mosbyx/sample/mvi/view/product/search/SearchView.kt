@@ -15,11 +15,11 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.product.search
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import com.gartesk.mosbyx.sample.mvi.businesslogic.interactor.search.SearchViewState
 import io.reactivex.Observable
 
-interface SearchView : MvpView {
+interface SearchView : MviView {
 	/**
 	 * The search intent
 	 *

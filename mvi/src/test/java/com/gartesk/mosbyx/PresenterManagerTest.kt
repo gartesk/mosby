@@ -18,8 +18,8 @@ package com.gartesk.mosbyx
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviPresenter
+import com.gartesk.mosbyx.mvi.MviView
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -271,8 +271,8 @@ class PresenterManagerTest {
 		val application = mock(Application::class.java)
 		`when`(activity.application).thenReturn(application)
 
-		val presenter = object : MvpPresenter<MvpView> {
-			override fun attachView(view: MvpView) = Unit
+		val presenter = object : MviPresenter<MviView, Any> {
+			override fun attachView(view: MviView) = Unit
 
 			override fun detachView() = Unit
 
@@ -283,7 +283,7 @@ class PresenterManagerTest {
 		assertNull(PresenterManager.getPresenter(activity, viewId))
 
 		PresenterManager.putPresenter(activity, viewId, presenter)
-		assertTrue(presenter === PresenterManager.getPresenter<MvpPresenter<MvpView>>(activity, viewId))
+		assertTrue(presenter === PresenterManager.getPresenter<MviPresenter<MviView, Any>>(activity, viewId))
 
 		PresenterManager.remove(activity, viewId)
 		assertNull(PresenterManager.getPresenter(activity, viewId))

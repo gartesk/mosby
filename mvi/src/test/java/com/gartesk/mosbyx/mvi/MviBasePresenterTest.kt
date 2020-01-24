@@ -15,7 +15,6 @@
  */
 package com.gartesk.mosbyx.mvi
 
-import com.gartesk.mosbyx.mvp.MvpView
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.atomic.AtomicInteger
 import org.junit.Assert.*
@@ -29,9 +28,9 @@ class MviBasePresenterTest {
 		val bindInvocations = AtomicInteger(0)
 		val unbindInvocations = AtomicInteger(0)
 
-		val view = object : MvpView {}
+		val view = object : MviView {}
 
-		val presenter = object : MviBasePresenter<MvpView, Any>() {
+		val presenter = object : MviBasePresenter<MviView, Any>() {
 			override fun bindIntents() {
 				bindInvocations.incrementAndGet()
 			}
@@ -127,9 +126,9 @@ class MviBasePresenterTest {
 		val bindInvocations = AtomicInteger(0)
 		val unbindInvocations = AtomicInteger(0)
 
-		val view = object : MvpView {}
+		val view = object : MviView {}
 
-		val presenter = object : MviBasePresenter<MvpView, Any>() {
+		val presenter = object : MviBasePresenter<MviView, Any>() {
 			override fun bindIntents() {
 				bindInvocations.incrementAndGet()
 			}
@@ -153,7 +152,8 @@ class MviBasePresenterTest {
 		assertEquals(2, unbindInvocations.get().toLong())
 	}
 
-	private class KeepUnderlyingSubscriptionsView : MvpView {
+	private class KeepUnderlyingSubscriptionsView :
+		MviView {
 
 		internal var renderedModels: MutableList<String> = ArrayList()
 

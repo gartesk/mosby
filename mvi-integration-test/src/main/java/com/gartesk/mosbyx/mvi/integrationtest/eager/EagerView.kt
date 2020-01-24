@@ -15,10 +15,10 @@
  */
 package com.gartesk.mosbyx.mvi.integrationtest.eager
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import io.reactivex.Observable
 
-interface EagerView : MvpView {
+interface EagerView : MviView {
 	fun intent1(): Observable<String>
 	fun intent2(): Observable<String>
 	fun render(state: String)

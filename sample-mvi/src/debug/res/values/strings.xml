@@ -14,5 +14,5 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="leak_canary_display_activity_label">Mosby MVI Example Leaks</string>
+    <string name="leak_canary_display_activity_label">MosbyX MVI Example Leaks</string>
 </resources>

@@ -15,10 +15,10 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.checkoutbutton
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import io.reactivex.Observable
 
-interface CheckoutButtonView : MvpView {
+interface CheckoutButtonView : MviView {
 	/**
 	 * Intent to load the data
 	 */

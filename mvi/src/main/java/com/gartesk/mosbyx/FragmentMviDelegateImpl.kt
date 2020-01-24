@@ -24,7 +24,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import java.util.UUID
 
 /**
@@ -35,12 +35,12 @@ import java.util.UUID
  * [Fragment.onStart]. The View is detached from Presenter in [Fragment.onStop].
  * [MviPresenter.destroy] is called from [ ][Fragment.onDestroy] if Fragment will be destroyed permanently.
  *
- * @param [V] The type of [MvpView]
+ * @param [V] The type of [MviView]
  * @param [P] The type of [MviPresenter]
  * @see FragmentMviDelegate
  *
  */
-class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads constructor(
+class FragmentMviDelegateImpl<V : MviView, P : MviPresenter<V, *>> @JvmOverloads constructor(
 	private var delegateCallback: MviDelegateCallback<V, P>,
 	private var fragment: Fragment,
 	private val keepPresenterDuringScreenOrientationChange: Boolean = true,
@@ -76,7 +76,7 @@ class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads
 		}
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "MosbyView ID = $mosbyViewId for MvpView: ${delegateCallback.mvpView}")
+			Log.d(DEBUG_TAG, "MosbyView ID = $mosbyViewId for MviView: ${delegateCallback.mviView}")
 		}
 
 		val currentMosbyViewId = mosbyViewId
@@ -117,7 +117,7 @@ class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads
 	override fun onStart() {
 
 		// presenter is ready, so attach viewState
-		val view = delegateCallback.mvpView
+		val view = delegateCallback.mviView
 
 		if (viewStateWillBeRestored) {
 			delegateCallback.setRestoringViewState(true)
@@ -130,7 +130,7 @@ class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads
 		}
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "MvpView attached to Presenter. MvpView: $view. Presenter: $presenter")
+			Log.d(DEBUG_TAG, "MviView attached to Presenter. MviView: $view. Presenter: $presenter")
 		}
 	}
 
@@ -139,7 +139,7 @@ class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads
 		check(onViewCreatedCalled) {
 			"It seems that onCreateView() has never been called " +
 					"(or has returned null). This means that your fragment is headless (no UI). " +
-					"That is not allowed because it doesn't make sense to use Mosby with a " +
+					"That is not allowed because it doesn't make sense to use MosbyX with a " +
 					"Fragment without View."
 		}
 	}
@@ -165,8 +165,8 @@ class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads
 		viewStateWillBeRestored = true // used after screen orientation if retaining Fragment
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "Detached MvpView from Presenter. " +
-						"MvpView: ${delegateCallback.mvpView}. Presenter: $presenter")
+			Log.d(DEBUG_TAG, "Detached MviView from Presenter. " +
+						"MviView: ${delegateCallback.mviView}. Presenter: $presenter")
 		}
 	}
 
@@ -194,7 +194,7 @@ class FragmentMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>> @JvmOverloads
 	override fun onResume() = Unit
 
 	/**
-	 * Generates the unique (mosby internal) viewState id and calls [MviDelegateCallback.createPresenter]
+	 * Generates the unique (MosbyX internal) viewState id and calls [MviDelegateCallback.createPresenter]
 	 * to create a new presenter instance
 	 *
 	 * @return The new created presenter instance

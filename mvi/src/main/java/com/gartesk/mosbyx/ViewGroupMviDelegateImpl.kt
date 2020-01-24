@@ -23,7 +23,7 @@ import android.util.Log
 import android.view.View
 
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import java.util.UUID
 
 /**
@@ -31,7 +31,7 @@ import java.util.UUID
  *
  * @see ViewGroupMviDelegate
  */
-class ViewGroupMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>(
+class ViewGroupMviDelegateImpl<V : MviView, P : MviPresenter<V, *>>(
 	view: View,
 	private val delegateCallback: ViewGroupMviDelegateCallback<V, P>,
 	private val keepPresenterDuringScreenOrientationChange: Boolean
@@ -61,7 +61,7 @@ class ViewGroupMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>(
 	private var presenterDestroyed = false
 
 	/**
-	 * Generates the unique (mosby internal) viewState id and calls [MviDelegateCallback.createPresenter]
+	 * Generates the unique (MosbyX internal) viewState id and calls [MviDelegateCallback.createPresenter]
 	 * to create a new presenter instance
 	 *
 	 * @return The new created presenter instance
@@ -119,7 +119,7 @@ class ViewGroupMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>(
 		}
 
 		// presenter is ready, so attach viewState
-		val view = delegateCallback.mvpView
+		val view = delegateCallback.mviView
 
 		if (viewStateWillBeRestored) {
 			delegateCallback.setRestoringViewState(true)
@@ -132,7 +132,7 @@ class ViewGroupMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>(
 		}
 
 		if (DEBUG) {
-			Log.d(DEBUG_TAG, "MvpView attached to Presenter. MvpView: $view. Presenter: $presenter")
+			Log.d(DEBUG_TAG, "MviView attached to Presenter. MviView: $view. Presenter: $presenter")
 		}
 	}
 
@@ -257,7 +257,7 @@ class ViewGroupMviDelegateImpl<V : MvpView, P : MviPresenter<V, *>>(
 			presenter.detachView()
 			presenterDetached = true
 			if (DEBUG) {
-				Log.d(DEBUG_TAG, "View ${delegateCallback.mvpView} detached from Presenter $presenter")
+				Log.d(DEBUG_TAG, "View ${delegateCallback.mviView} detached from Presenter $presenter")
 			}
 		}
 	}

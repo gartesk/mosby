@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gartesk.mosbyx.mvp
+package com.gartesk.mosbyx.mvi
 
 /**
- * The root view interface for every mvp view
+ * The root view interface for every mvi view
  */
-interface MvpView
+interface MviView

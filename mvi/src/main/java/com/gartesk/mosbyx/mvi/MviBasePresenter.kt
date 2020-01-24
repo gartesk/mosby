@@ -18,8 +18,6 @@ package com.gartesk.mosbyx.mvi
 import androidx.annotation.CallSuper
 import androidx.annotation.MainThread
 
-import com.gartesk.mosbyx.mvp.MvpView
-
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -67,7 +65,7 @@ import io.reactivex.subjects.UnicastSubject
  * @param [V] The type of the view this presenter responds to
  * @param [VS] The type of the viewState state
  */
-abstract class MviBasePresenter<V : MvpView, VS>
+abstract class MviBasePresenter<V : MviView, VS>
 /**
  * Creates a new Presenter with the initial view state
  *
@@ -149,7 +147,7 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 	 * @param [V] The View type
 	 * @param [I] The type of the Intent
 	 */
-	protected interface ViewIntentBinder<V : MvpView, I> {
+	protected interface ViewIntentBinder<V : MviView, I> {
 		fun bind(view: V): Observable<I>
 	}
 
@@ -162,7 +160,7 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 	 * @param [V] The view type
 	 * @param [VS] The ViewState type
 	 */
-	protected interface ViewStateConsumer<V : MvpView, VS> {
+	protected interface ViewStateConsumer<V : MviView, VS> {
 		fun accept(view: V, viewState: VS)
 	}
 
@@ -234,7 +232,7 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 	 * consumer.
 	 * **Only invoke this method once!**
 	 *
-	 * Internally, Mosby will hold some relays to ensure that no items emitted from the ViewState
+	 * Internally, MosbyX will hold some relays to ensure that no items emitted from the ViewState
 	 * Observable will be lost while viewState is not attached nor that the subscriptions to
 	 * viewState intents will cause memory leaks while viewState detached.
 	 *
@@ -284,7 +282,7 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 	/**
 	 * Actually subscribes the view as consumer to the internally view relay.
 	 *
-	 * @param view The mvp view
+	 * @param view The mvi view
 	 * @param consumer [ViewStateConsumer] The consumer that will update ("render") the view.
 	 */
 	@MainThread

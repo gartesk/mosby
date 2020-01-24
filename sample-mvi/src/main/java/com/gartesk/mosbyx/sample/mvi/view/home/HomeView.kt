@@ -15,14 +15,14 @@
  */
 package com.gartesk.mosbyx.sample.mvi.view.home
 
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 import com.gartesk.mosbyx.sample.mvi.businesslogic.model.FeedItem
 import io.reactivex.Observable
 
 /**
  * The HomeView responsible to display a list of [FeedItem]
  */
-interface HomeView : MvpView {
+interface HomeView : MviView {
 	/**
 	 * The intent to load the first page
 	 */

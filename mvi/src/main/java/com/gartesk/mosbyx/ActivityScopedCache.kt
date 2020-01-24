@@ -15,8 +15,8 @@
  */
 package com.gartesk.mosbyx
 
-import com.gartesk.mosbyx.mvp.MvpPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviPresenter
+import com.gartesk.mosbyx.mvi.MviView
 
 /**
  * This class basically represents a Map for View Id to the Presenter / ViewState.
@@ -36,10 +36,10 @@ internal class ActivityScopedCache {
 	}
 
 	/**
-	 * Get the Presenter for a given [MvpView] if exists or `null`
+	 * Get the Presenter for a given [MviView] if exists or `null`
 	 *
-	 * @param viewId The mosby internal view id
-	 * @param <P> The type tof the [MvpPresenter]
+	 * @param viewId The MosbyX internal view id
+	 * @param <P> The type tof the [MviPresenter]
 	 * @return The Presenter for the given view id or `null`
 	 */
 	fun <P> getPresenter(viewId: String): P? {
@@ -52,10 +52,10 @@ internal class ActivityScopedCache {
 	}
 
 	/**
-	 * Get the ViewState for a given [MvpView] if exists or `null`
+	 * Get the ViewState for a given [MviView] if exists or `null`
 	 *
-	 * @param viewId The mosby internal view id
-	 * @param <VS> The type tof the [MvpPresenter]
+	 * @param viewId The MosbyX internal view id
+	 * @param <VS> The type of the view state
 	 * @return The ViewState for the given view id or `null`
 	 */
 	fun <VS> getViewState(viewId: String): VS? {
@@ -70,10 +70,10 @@ internal class ActivityScopedCache {
 	/**
 	 * Put the presenter in the internal cache
 	 *
-	 * @param viewId The mosby internal View id of the [MvpView] which the presenter is associated to.
+	 * @param viewId The MosbyX internal View id of the [MviView] which the presenter is associated to.
 	 * @param presenter The Presenter
 	 */
-	fun putPresenter(viewId: String, presenter: MvpPresenter<out MvpView>) {
+	fun putPresenter(viewId: String, presenter: MviPresenter<out MviView, *>) {
 		val presenterHolder = presenterMap[viewId]
 		if (presenterHolder == null) {
 			presenterMap[viewId] = PresenterHolder(presenter = presenter)
@@ -86,7 +86,7 @@ internal class ActivityScopedCache {
 	/**
 	 * Put the viewstate in the internal cache
 	 *
-	 * @param viewId The mosby internal View id of the [MvpView] which the presenter is associated to.
+	 * @param viewId The MosbyX internal View id of the [MviView] which the presenter is associated to.
 	 * @param viewState The Viewstate
 	 */
 	fun putViewState(viewId: String, viewState: Any) {
@@ -101,7 +101,7 @@ internal class ActivityScopedCache {
 	/**
 	 * Removes the Presenter (and ViewState) from the internal storage
 	 *
-	 * @param viewId The mosby internal view id
+	 * @param viewId The MosbyX internal view id
 	 */
 	fun remove(viewId: String) {
 		presenterMap.remove(viewId)
@@ -111,7 +111,7 @@ internal class ActivityScopedCache {
 	 * Internal config change Cache entry
 	 */
 	internal data class PresenterHolder(
-		val presenter: MvpPresenter<*>? = null,
+		val presenter: MviPresenter<*, *>? = null,
 		// workaround: didn't want to introduce dependency to viewstate module
 		val viewState: Any? = null
 	)

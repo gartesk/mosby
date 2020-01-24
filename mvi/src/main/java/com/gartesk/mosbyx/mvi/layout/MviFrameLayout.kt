@@ -24,18 +24,19 @@ import com.gartesk.mosbyx.ViewGroupMviDelegate
 import com.gartesk.mosbyx.ViewGroupMviDelegateCallback
 import com.gartesk.mosbyx.ViewGroupMviDelegateImpl
 import com.gartesk.mosbyx.mvi.MviPresenter
-import com.gartesk.mosbyx.mvp.MvpView
+import com.gartesk.mosbyx.mvi.MviView
 
 /**
  * A FrameLayout that can be used as View with an Presenter to implement MVI
  */
-abstract class MviFrameLayout<V : MvpView, P : MviPresenter<V, *>>
+abstract class MviFrameLayout<V : MviView, P : MviPresenter<V, *>>
 @JvmOverloads constructor(
 	context: Context,
 	attrs: AttributeSet? = null,
 	defStyleAttr: Int = 0,
 	defStyleRes: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), ViewGroupMviDelegateCallback<V, P>, MvpView {
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), ViewGroupMviDelegateCallback<V, P>,
+	MviView {
 
 	private var isRestoringViewState = false
 
@@ -81,7 +82,7 @@ abstract class MviFrameLayout<V : MvpView, P : MviPresenter<V, *>>
 	 */
 	abstract override fun createPresenter(): P
 
-	override val mvpView: V
+	override val mviView: V
 		get() = this as V
 
 	override fun superOnSaveInstanceState(): Parcelable? {

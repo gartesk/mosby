@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * This class doesn't necessarily has to be a fragment. It's just a fragment because I want to
- * demonstrate that mosby works with fragments in xml layouts too.
+ * demonstrate that MosbyX works with fragments in xml layouts too.
  */
 class ShoppingCartOverviewFragment :
 	MviFragment<ShoppingCartOverviewView, ShoppingCartOverviewPresenter>(),

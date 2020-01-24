@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gartesk.mosbyx.ActivityMviDelegate
 import com.gartesk.mosbyx.ActivityMviDelegateImpl
 import com.gartesk.mosbyx.MviDelegateCallback
-import com.gartesk.mosbyx.mvp.MvpView
 
 /**
  * This abstract class can be used to extend from to implement an Model-View-Intent pattern with
@@ -33,8 +32,8 @@ import com.gartesk.mosbyx.mvp.MvpView
  *
  * The view is detached from presenter in [onStop]
  */
-abstract class MviActivity<V : MvpView, P : MviPresenter<V, *>> :
-	AppCompatActivity(), MvpView, MviDelegateCallback<V, P> {
+abstract class MviActivity<V : MviView, P : MviPresenter<V, *>> :
+	AppCompatActivity(), MviView, MviDelegateCallback<V, P> {
 
 	private var isRestoringViewState = false
 
@@ -109,7 +108,7 @@ abstract class MviActivity<V : MvpView, P : MviPresenter<V, *>> :
 	 */
 	abstract override fun createPresenter(): P
 
-	override val mvpView: V
+	override val mviView: V
 		get() = try {
 			this as V
 		} catch (e: ClassCastException) {
