@@ -21,9 +21,9 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.AbsSavedState
 import androidx.appcompat.widget.AppCompatButton
-import com.gartesk.mosbyx.ViewGroupMviDelegate
-import com.gartesk.mosbyx.ViewGroupMviDelegateCallback
-import com.gartesk.mosbyx.ViewGroupMviDelegateImpl
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegate
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateCallback
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateImpl
 import com.gartesk.mosbyx.sample.mvi.R
 import com.gartesk.mosbyx.sample.mvi.SampleApplication
 import io.reactivex.Observable
@@ -40,7 +40,11 @@ class ShoppingCartLabel(
 	ViewGroupMviDelegateCallback<ShoppingCartLabelView, ShoppingCartLabelPresenter> {
 
 	private val mviDelegate: ViewGroupMviDelegate<ShoppingCartLabelView, ShoppingCartLabelPresenter> =
-		ViewGroupMviDelegateImpl(this, this, true)
+		ViewGroupMviDelegateImpl(
+			this,
+			this,
+			true
+		)
 
 	override val mviView: ShoppingCartLabelView
 		get() = this

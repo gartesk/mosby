@@ -57,7 +57,8 @@ class MviBasePresenterTest {
 	fun keepUnderlyingSubscriptions() {
 		val intentsData = mutableListOf<String>()
 		val businessLogic = PublishSubject.create<String>()
-		val view = KeepUnderlyingSubscriptionsView()
+		val view =
+			KeepUnderlyingSubscriptionsView()
 		val presenter = object : MviBasePresenter<KeepUnderlyingSubscriptionsView, String>() {
 			override fun bindIntents() {
 				intent { it.intent }

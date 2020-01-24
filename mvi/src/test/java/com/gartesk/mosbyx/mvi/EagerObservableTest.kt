@@ -64,7 +64,8 @@ class EagerObservableTest {
 	@Test
 	fun connectEager() {
 		val view = EagerView()
-		val presenter = EagerPresenter()
+		val presenter =
+			EagerPresenter()
 
 		presenter.attachView(view)
 

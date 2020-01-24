@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gartesk.mosbyx
+package com.gartesk.mosbyx.mvi
 
 import android.app.Activity
 import androidx.fragment.app.Fragment
@@ -35,7 +35,7 @@ internal fun Activity.shouldRetainPresenterInstance(keepPresenterInstance: Boole
  * @return true, if the given Fragment is on the back stack, otherwise false (not on the back
  * stack)
  */
-fun Fragment.isInBackStack(): Boolean {
+internal fun Fragment.isInBackStack(): Boolean {
 	return try {
 		val backStackNestingField = Fragment::class.java
 			.getDeclaredField("mBackStackNesting")

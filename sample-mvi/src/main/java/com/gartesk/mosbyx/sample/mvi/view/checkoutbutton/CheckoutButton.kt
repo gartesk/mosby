@@ -22,9 +22,9 @@ import android.view.AbsSavedState
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import com.gartesk.mosbyx.ViewGroupMviDelegate
-import com.gartesk.mosbyx.ViewGroupMviDelegateCallback
-import com.gartesk.mosbyx.ViewGroupMviDelegateImpl
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegate
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateCallback
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateImpl
 import com.gartesk.mosbyx.sample.mvi.SampleApplication
 import io.reactivex.Observable
 import timber.log.Timber
@@ -38,7 +38,11 @@ class CheckoutButton(
 	ViewGroupMviDelegateCallback<CheckoutButtonView, CheckoutButtonPresenter> {
 
 	private val mviDelegate: ViewGroupMviDelegate<CheckoutButtonView, CheckoutButtonPresenter> =
-		ViewGroupMviDelegateImpl(this, this, true)
+		ViewGroupMviDelegateImpl(
+			this,
+			this,
+			true
+		)
 
 	override val mviView: CheckoutButtonView
 		get() = this

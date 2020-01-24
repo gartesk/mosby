@@ -61,8 +61,10 @@ class EagerViewStartWithTest {
 
 	@Test
 	fun viewWithStartWithIntentWorksProperly() {
-		val view = EagerViewStartWith()
-		val presenter = EagerPresenter()
+		val view =
+			EagerViewStartWith()
+		val presenter =
+			EagerPresenter()
 		presenter.attachView(view)
 
 		assertEquals(

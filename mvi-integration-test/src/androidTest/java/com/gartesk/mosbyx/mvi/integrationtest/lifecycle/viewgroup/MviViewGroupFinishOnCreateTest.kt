@@ -17,7 +17,7 @@ package com.gartesk.mosbyx.mvi.integrationtest.lifecycle.viewgroup
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.gartesk.mosbyx.ViewGroupMviDelegateImpl.Companion.DEBUG
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateImpl.Companion.DEBUG
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Rule

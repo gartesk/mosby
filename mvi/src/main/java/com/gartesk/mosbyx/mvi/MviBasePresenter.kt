@@ -17,6 +17,8 @@ package com.gartesk.mosbyx.mvi
 
 import androidx.annotation.CallSuper
 import androidx.annotation.MainThread
+import com.gartesk.mosbyx.mvi.util.DisposableIntentObserver
+import com.gartesk.mosbyx.mvi.util.DisposableViewStateObserver
 
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -71,7 +73,8 @@ abstract class MviBasePresenter<V : MviView, VS>
  *
  * @param initialViewState initial view state (must be not null)
  */
-constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
+constructor(initialViewState: VS? = null) :
+	MviPresenter<V, VS> {
 
 	/**
 	 * This relay is the bridge to the viewState (UI). Whenever the viewState gets re-attached, the
@@ -254,7 +257,9 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 		this.viewStateConsumer = consumer
 
 		viewStateDisposable = viewStateObservable.subscribeWith(
-			DisposableViewStateObserver(viewStateBehaviorSubject)
+			DisposableViewStateObserver(
+				viewStateBehaviorSubject
+			)
 		)
 	}
 
@@ -271,7 +276,8 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 		viewStateObservable: Observable<VS>,
 		consumer: (V, VS) -> Unit
 	) {
-		val consumerObject = object: ViewStateConsumer<V, VS> {
+		val consumerObject = object:
+			ViewStateConsumer<V, VS> {
 			override fun accept(view: V, viewState: VS) {
 				consumer(view, viewState)
 			}
@@ -348,7 +354,8 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 	 */
 	@MainThread
 	protected fun <I> intent(binder: (V) -> Observable<I>): Observable<I> {
-		val binderObject = object : ViewIntentBinder<V, I> {
+		val binderObject = object :
+			ViewIntentBinder<V, I> {
 			override fun bind(view: V): Observable<I> = binder(view)
 		}
 		return intent(binderObject)
@@ -362,7 +369,11 @@ constructor(initialViewState: VS? = null) : MviPresenter<V, VS> {
 		val intentRelay = relayBinderPair.intentRelaySubject as Subject<I>
 		val intentBinder = relayBinderPair.intentBinder as ViewIntentBinder<V, I>
 		val intent = intentBinder.bind(view)
-		intentDisposables.add(intent.subscribeWith(DisposableIntentObserver(intentRelay)))
+		intentDisposables.add(intent.subscribeWith(
+			DisposableIntentObserver(
+				intentRelay
+			)
+		))
 		return intentRelay
 	}
 }

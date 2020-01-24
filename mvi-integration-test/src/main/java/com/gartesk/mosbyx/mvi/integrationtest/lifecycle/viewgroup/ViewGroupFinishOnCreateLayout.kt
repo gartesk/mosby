@@ -19,7 +19,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.gartesk.mosbyx.mvi.integrationtest.lifecycle.LifecycleTestPresenter
 import com.gartesk.mosbyx.mvi.integrationtest.lifecycle.LifecycleTestView
-import com.gartesk.mosbyx.mvi.layout.MviFrameLayout
+import com.gartesk.mosbyx.mvi.MviFrameLayout
 
 class ViewGroupFinishOnCreateLayout(context: Context, attrs: AttributeSet) :
 	MviFrameLayout<LifecycleTestView, LifecycleTestPresenter>(context, attrs), LifecycleTestView {

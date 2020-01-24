@@ -19,7 +19,7 @@ import android.content.pm.ActivityInfo
 import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.gartesk.mosbyx.ViewGroupMviDelegateImpl.Companion.DEBUG
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateImpl.Companion.DEBUG
 import com.gartesk.mosbyx.mvi.integrationtest.lifecycle.LifecycleTestPresenter
 import org.junit.After
 import org.junit.Assert.*

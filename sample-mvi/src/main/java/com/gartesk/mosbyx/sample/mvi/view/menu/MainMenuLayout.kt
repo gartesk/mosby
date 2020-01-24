@@ -21,7 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
-import com.gartesk.mosbyx.mvi.layout.MviFrameLayout
+import com.gartesk.mosbyx.mvi.MviFrameLayout
 import com.gartesk.mosbyx.sample.mvi.R
 import com.gartesk.mosbyx.sample.mvi.SampleApplication
 import io.reactivex.Observable

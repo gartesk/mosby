@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gartesk.mosbyx.mvi
+package com.gartesk.mosbyx.mvi.util
 
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
@@ -31,7 +31,11 @@ class DisposableIntentObserverTest {
 		val sub = TestObserver<String>()
 		subject.subscribeWith(sub)
 
-		Observable.just("Hello").subscribe(DisposableIntentObserver(subject))
+		Observable.just("Hello").subscribe(
+			DisposableIntentObserver(
+				subject
+			)
+		)
 
 		sub.assertNoErrors().assertComplete().assertResult("Hello")
 	}
@@ -45,7 +49,11 @@ class DisposableIntentObserverTest {
 		val originalException = RuntimeException("I am the original Exception")
 		val expectedException = IllegalStateException("View intents must not throw errors", originalException)
 		try {
-			Observable.error<Any>(originalException).subscribe(DisposableIntentObserver(subject))
+			Observable.error<Any>(originalException).subscribe(
+				DisposableIntentObserver(
+					subject
+				)
+			)
 			fail("Exception expected")
 		} catch (e: Throwable) {
 			val cause = e.cause!!

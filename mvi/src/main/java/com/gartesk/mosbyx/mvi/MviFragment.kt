@@ -23,9 +23,9 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
-import com.gartesk.mosbyx.FragmentMviDelegate
-import com.gartesk.mosbyx.FragmentMviDelegateImpl
-import com.gartesk.mosbyx.MviDelegateCallback
+import com.gartesk.mosbyx.mvi.delegate.fragment.FragmentMviDelegate
+import com.gartesk.mosbyx.mvi.delegate.fragment.FragmentMviDelegateImpl
+import com.gartesk.mosbyx.mvi.delegate.MviDelegateCallback
 
 /**
  * This abstract class can be used to extend from to implement an Model-View-Intent pattern with

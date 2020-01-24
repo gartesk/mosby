@@ -22,9 +22,9 @@ import android.util.AttributeSet
 import android.view.AbsSavedState
 import android.view.View
 import android.widget.Toolbar
-import com.gartesk.mosbyx.ViewGroupMviDelegate
-import com.gartesk.mosbyx.ViewGroupMviDelegateCallback
-import com.gartesk.mosbyx.ViewGroupMviDelegateImpl
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegate
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateCallback
+import com.gartesk.mosbyx.mvi.delegate.viewgroup.ViewGroupMviDelegateImpl
 import com.gartesk.mosbyx.sample.mvi.R
 import com.gartesk.mosbyx.sample.mvi.SampleApplication
 import io.reactivex.Observable
@@ -39,7 +39,11 @@ class SelectedCountToolbar(
 	ViewGroupMviDelegateCallback<SelectedCountToolbarView, SelectedCountToolbarPresenter> {
 
 	private val mviDelegate: ViewGroupMviDelegate<SelectedCountToolbarView, SelectedCountToolbarPresenter> =
-		ViewGroupMviDelegateImpl(this, this, true)
+		ViewGroupMviDelegateImpl(
+			this,
+			this,
+			true
+		)
 	private val clearSelectionIntent = PublishSubject.create<Unit>()
 	private val deleteSelectedItemsIntent = PublishSubject.create<Unit>()
 

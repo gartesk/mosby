@@ -17,7 +17,7 @@ package com.gartesk.mosbyx.mvi.integrationtest.backstack
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.gartesk.mosbyx.FragmentMviDelegateImpl.Companion.DEBUG
+import com.gartesk.mosbyx.mvi.delegate.fragment.FragmentMviDelegateImpl.Companion.DEBUG
 import com.gartesk.mosbyx.mvi.integrationtest.backstack.BackstackActivity.Companion.navigateToSecondFragment
 import com.gartesk.mosbyx.mvi.integrationtest.backstack.BackstackActivity.Companion.pressBackButton
 import com.gartesk.mosbyx.mvi.integrationtest.backstack.BackstackActivity.Companion.rotateToLandscape

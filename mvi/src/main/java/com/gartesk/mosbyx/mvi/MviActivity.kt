@@ -18,9 +18,9 @@ package com.gartesk.mosbyx.mvi
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.gartesk.mosbyx.ActivityMviDelegate
-import com.gartesk.mosbyx.ActivityMviDelegateImpl
-import com.gartesk.mosbyx.MviDelegateCallback
+import com.gartesk.mosbyx.mvi.delegate.activity.ActivityMviDelegate
+import com.gartesk.mosbyx.mvi.delegate.activity.ActivityMviDelegateImpl
+import com.gartesk.mosbyx.mvi.delegate.MviDelegateCallback
 
 /**
  * This abstract class can be used to extend from to implement an Model-View-Intent pattern with
@@ -33,7 +33,8 @@ import com.gartesk.mosbyx.MviDelegateCallback
  * The view is detached from presenter in [onStop]
  */
 abstract class MviActivity<V : MviView, P : MviPresenter<V, *>> :
-	AppCompatActivity(), MviView, MviDelegateCallback<V, P> {
+	AppCompatActivity(), MviView,
+	MviDelegateCallback<V, P> {
 
 	private var isRestoringViewState = false
 
