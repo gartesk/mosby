@@ -24,8 +24,8 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.ReplaySubject
 import io.reactivex.subjects.Subject
-import io.reactivex.subjects.UnicastSubject
 
 /**
  * This type of presenter is responsible for interaction with the viewState in a Model-View-Intent way.
@@ -339,7 +339,7 @@ constructor(initialViewState: VS? = null) :
 	 */
 	@MainThread
 	protected fun <I> intent(binder: ViewIntentBinder<V, I>): Observable<I> {
-		val intentRelay = UnicastSubject.create<I>()
+		val intentRelay = ReplaySubject.create<I>()
 		intentRelaysBinders.add(IntentRelayBinderPair(intentRelay, binder))
 		return intentRelay
 	}
