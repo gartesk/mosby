@@ -1,4 +1,6 @@
 # MosbyX
+[![](https://jitpack.io/v/gartesk/mosbyx.svg)](https://jitpack.io/#gartesk/mosbyx)
+
 A fork of Model-View-Intent library [mosby](https://github.com/sockeqwe/mosby) for Android apps.
 
 # More info coming soon
