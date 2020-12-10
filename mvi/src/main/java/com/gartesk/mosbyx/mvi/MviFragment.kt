@@ -117,7 +117,7 @@ abstract class MviFragment<V : MviView, P : MviPresenter<V, *>> :
 	}
 
 	@CallSuper
-	@Deprecated("")
+	@Deprecated(message = "Deprecated in androidx.fragment.app.Fragment")
 	override fun onAttach(activity: Activity) {
 		super.onAttach(activity)
 		mviDelegate.onAttach(activity)

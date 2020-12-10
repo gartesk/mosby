@@ -24,8 +24,8 @@ android {
 		applicationId "com.gartesk.mosbyx.sample.mvi"
 		minSdkVersion rootProject.ext.minSdk
 		targetSdkVersion rootProject.ext.targetSdk
-		versionName project.VERSION_NAME
-		versionCode Integer.parseInt(project.VERSION_CODE)
+		versionName rootProject.ext.versionName
+		versionCode rootProject.ext.versionCode
 	}
 
 	buildTypes {
@@ -33,6 +33,11 @@ android {
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility 1.8
+		targetCompatibility 1.8
 	}
 
 	lintOptions {

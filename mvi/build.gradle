@@ -15,9 +15,9 @@
  */
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 
-group='com.github.gartesk'
+group = 'com.github.gartesk'
 
 android {
 
@@ -27,8 +27,8 @@ android {
 	defaultConfig {
 		minSdkVersion rootProject.ext.minSdk
 		targetSdkVersion rootProject.ext.targetSdk
-		versionName project.VERSION_NAME
-		versionCode Integer.parseInt(project.VERSION_CODE)
+		versionName rootProject.ext.versionName
+		versionCode rootProject.ext.versionCode
 
 		packagingOptions {
 			exclude 'LICENSE.txt'
@@ -38,6 +38,20 @@ android {
 		release {
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+}
+
+afterEvaluate {
+	publishing {
+		publications {
+			release(MavenPublication) {
+				from components.release
+
+				groupId = 'com.github.gartesk'
+				artifactId = 'mosbyx'
+				version = rootProject.ext.versionName
+			}
 		}
 	}
 }

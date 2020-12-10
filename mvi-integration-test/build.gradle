@@ -24,8 +24,8 @@ android {
 		applicationId "com.gartesk.mosbyx.mvi.integrationtest"
 		minSdkVersion rootProject.ext.minSdk
 		targetSdkVersion rootProject.ext.targetSdk
-		versionName project.VERSION_NAME
-		versionCode Integer.parseInt(project.VERSION_CODE)
+		versionName rootProject.ext.versionName
+		versionCode rootProject.ext.versionCode
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}
@@ -35,6 +35,11 @@ android {
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility 1.8
+		targetCompatibility 1.8
 	}
 
 	lintOptions {
@@ -50,7 +55,7 @@ dependencies {
 
 	androidTestImplementation "androidx.test:runner:$androidXTestVersion"
 	androidTestImplementation "androidx.test:rules:$androidXTestVersion"
-	androidTestImplementation "androidx.test.ext:junit:$androidXTestVersion"
+	androidTestImplementation "androidx.test.ext:junit:$androidXTestJUnitVersion"
 	androidTestImplementation "junit:junit:$junitVersion"
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
